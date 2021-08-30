@@ -1,29 +1,12 @@
 
+import { Navbar, Footer } from "@components/common"
+
 export default function Home() {
   return (
     <div>
       <div className="relative bg-white overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-4">
-
-          {/*------ NAVBAR STARTS ------*/}
-          <section>
-            <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
-              <nav className="relative" aria-label="Global">
-                <div className="flex justify-between">
-                  <div>
-                    <a href="#" className="font-medium mr-8 text-gray-500 hover:text-gray-900">Product</a>
-                    <a href="#" className="font-medium mr-8 text-gray-500 hover:text-gray-900">Features</a>
-                    <a href="#" className="font-medium mr-8 text-gray-500 hover:text-gray-900">Marketplace</a>
-                  </div>
-                  <div>
-                    <a href="#" className="font-medium mr-8 text-gray-500 hover:text-gray-900">Company</a>
-                    <a href="#" className="font-medium mr-8 text-indigo-600 hover:text-indigo-500">Log in</a>
-                  </div>
-                </div>
-              </nav>
-            </div>
-          </section>
-          {/*------ NAVBAR ENDS ------*/}
+          <Navbar />
           <div className="fit">
 
             {/*------ HERO STARTS ------*/}
@@ -206,19 +189,7 @@ export default function Home() {
 
           </div>
         </div>
-        {/*------ FOOTER STARTS ------*/}
-        <footer className="bg-gray-900 pt-1">
-          <div className="container mx-auto px-6">
-            <div className="mt-5 flex flex-col items-center">
-              <div className="py-6">
-                <p className="mb-6 text-white text-sm text-primary-2 font-bold">
-                    © {new Date().getFullYear()} Eincode
-                </p>
-              </div>
-            </div>
-          </div>
-        </footer>
-        {/*------ FOOTER ENDS ------*/}
+        <Footer />
       </div>
     </div>
   )
