@@ -1,5 +1,7 @@
 
-import { Navbar, Footer } from "@components/common"
+import { Navbar, Footer, Hero, Breadcrumbs } from "@components/common"
+import { EthRates } from "@components/web3"
+import WalletBar from "@components/web3/walletbar"
 
 export default function Home() {
   return (
@@ -8,74 +10,10 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4">
           <Navbar />
           <div className="fit">
-
-            {/*------ HERO STARTS ------*/}
-            <section className="lg:2/6 text-left my-28">
-              <div className="text-6xl font-semibold text-gray-900 leading-none">Grow your career as a developer</div>
-              <div className="mt-6 text-xl font-light text-true-gray-500 antialiased">Learn programming and web development the easy way! Get unlimited access to all of our courses.</div>
-              <div className="mt-5 sm:mt-8 flex lg:justify-start">
-                <div className="rounded-md shadow">
-                  <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                    Get started
-                  </a>
-                </div>
-              </div>
-            </section>
-            {/*------ HERO ENDS ------*/}
-
-            {/*------ BREADCRUMBS STARTS ------*/}
-            <nav aria-label="breadcrumb" className="mb-4">
-              <ol className="flex leading-none text-indigo-600 divide-x divide-indigo-400">
-                <li className="pr-4"><a href="#">Buy</a></li>
-                <li className="px-4"><a href="#">My Orders</a></li>
-                <li className="px-4"><a href="#">All Orders</a></li>
-              </ol>
-            </nav>
-            {/*------ BREADCRUMBS ENDS ------*/}
-
-            {/*------ ADDRESS STARTS ------*/}
-            <section className="text-white bg-indigo-600">
-              <div className="p-8">
-                <h1 className="text-2xl">Hello, 0xd9D5cD41Fe921A743F2b5Fe71CC3070F5C176208</h1>
-                <h2 className="subtitle mb-5 text-xl">I hope you are having a great day!</h2>
-                <div className="flex justify-between items-center">
-                  <div className="sm:flex sm:justify-center lg:justify-start">
-                    <div className="rounded-md shadow">
-                      <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-black bg-white hover:bg-gray-100 md:py-4 md:text-lg md:px-10">
-                        Learn how to purchase
-                      </a>
-                    </div>
-                  </div>
-                  <div>
-                    <div><span>Currently on </span><strong className="text-2xl">Ethereum Main Network</strong></div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            {/*------ ADDRESS ENDS ------*/}
-
-            {/*------ CURRENCY STARTS ------*/}
-            <div className="grid grid-cols-4 mb-5">
-              <div className="flex flex-1 items-stretch text-center">
-                <div className="p-10 border drop-shadow rounded-md">
-                  <div>
-                    <span className="text-2xl font-bold">ETH = 3145.1$</span>
-                  </div>
-                  <p className="text-xl text-gray-500">Current eth Price</p>
-                </div>
-              </div>
-              <div className="flex flex-1 items-stretch text-center">
-                <div className="p-10 border drop-shadow rounded-md">
-                  <div>
-                    <span className="text-2xl font-bold">0.004769 = 15$</span>
-                  </div>
-                  <p className="text-xl text-gray-500">Price per course</p>
-                </div>
-              </div>
-            </div>
-            {/*------ CURRENCY ENDS ------*/}
-
-            {/*------ ORDER INFO STARTS ------*/}
+            <Hero />
+            <Breadcrumbs />
+            <WalletBar />
+            <EthRates />
             <div className="bg-white shadow overflow-hidden sm:rounded-lg mb-3">
               <div className="px-4 py-5 sm:px-6">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
