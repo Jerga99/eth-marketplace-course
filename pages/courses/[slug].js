@@ -11,9 +11,12 @@ export default function Course({course}) {
 
   return (
     <>
-      {course.title}
       <div className="py-4">
-        <CourseHero />
+        <CourseHero
+          title={course.title}
+          description={course.description}
+          image={course.coverImage}
+        />
       </div>
       <Keypoints />
       <Curriculum />
