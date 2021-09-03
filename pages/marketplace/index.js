@@ -1,6 +1,6 @@
 
 
-import { CourseList } from "@components/ui/course"
+import { CourseCard, CourseList } from "@components/ui/course"
 import { BaseLayout } from "@components/ui/layout"
 import { getAllCourses } from "@content/courses/fetcher"
 import { WalletBar } from "@components/ui/web3"
@@ -21,7 +21,14 @@ export default function Marketplace({courses}) {
       </div>
       <CourseList
         courses={courses}
-      />
+      >
+      {course =>
+        <CourseCard
+          key={course.id}
+          course={course}
+        />
+      }
+      </CourseList>
     </>
   )
 }
