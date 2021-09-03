@@ -14,7 +14,6 @@ export default function Marketplace({courses}) {
   return (
     <>
       <div className="py-4">
-        { network.data }
         <WalletBar
           address={account.data}
           network={network.data}
