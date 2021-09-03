@@ -3,7 +3,7 @@
 import { useWeb3 } from "@components/providers"
 import Link from "next/link"
 import { Button } from "@components/ui/common"
-import { useAccount } from "@components/hooks/web3/useAccount"
+import { useAccount } from "@components/hooks/web3"
 import { useRouter } from "next/router"
 
 export default function Footer() {
