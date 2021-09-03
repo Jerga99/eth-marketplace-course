@@ -1,11 +1,9 @@
 
 
-
-
 import { useWeb3 } from "@components/providers"
 import Link from "next/link"
 import { Button } from "@components/ui/common"
-import { useAccount } from "@components/web3/hooks/useAccount"
+import { useAccount } from "@components/hooks/web3/useAccount"
 
 export default function Footer() {
   const { connect, isLoading, isWeb3Loaded } = useWeb3()
@@ -23,7 +21,7 @@ export default function Footer() {
                   Home
                 </a>
               </Link>
-              <Link href="/" >
+              <Link href="/marketplace" >
                 <a
                   className="font-medium mr-8 text-gray-500 hover:text-gray-900">
                   Marketplace
