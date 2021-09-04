@@ -1,6 +1,6 @@
-import { Modal } from "@components/ui/common";
 
 
+import { Modal, Button } from "@components/ui/common";
 
 
 export default function OrderModal() {
@@ -10,30 +10,77 @@ export default function OrderModal() {
       <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
         <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
           <div className="sm:flex sm:items-start">
-            <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-              <svg className="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
-            </div>
             <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-              <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                Deactivate account
+              <h3 className="mb-7 text-lg font-bold leading-6 text-gray-900" id="modal-title">
+                Course Title
               </h3>
-              <div className="mt-2">
-                <p className="text-sm text-gray-500">
-                  Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.
+              <div className="mt-1 relative rounded-md">
+                <div className="mb-1">
+                  <label className="mb-2 font-bold">Price(eth)</label>
+                  <div className="text-xs text-gray-700 flex">
+                    <label className="flex items-center mr-2">
+                      <input
+                        type="checkbox"
+                        className="form-checkbox"
+                      />
+                    </label>
+                    <span>Adjust Price - only when the price is not correct</span>
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  name="price"
+                  id="price"
+                  className="disabled:opacity-50 w-80 mb-1 focus:ring-indigo-500 shadow-md focus:border-indigo-500 block pl-7 p-4 sm:text-sm border-gray-300 rounded-md"
+                />
+                <p className="text-xs text-gray-700">
+                  Price will be verified at the time of the order. If the price will be lower, order can be declined (+- 2% slipage is allowed)
                 </p>
+              </div>
+              <div className="mt-2 relative rounded-md">
+                <div className="mb-1">
+                  <label className="mb-2 font-bold">Email</label>
+                </div>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  className="w-80 focus:ring-indigo-500 shadow-md focus:border-indigo-500 block pl-7 p-4 sm:text-sm border-gray-300 rounded-md"
+                  placeholder="x@y.com"
+                />
+                <p className="text-xs text-gray-700 mt-1">
+                It&apos;s important to fill a correct email, otherwise the order cannot be verified. We are not storing your email anywhere
+                </p>
+              </div>
+              <div className="my-2 relative rounded-md">
+                <div className="mb-1">
+                  <label className="mb-2 font-bold">Repeat Email</label>
+                </div>
+                <input
+                  type="email"
+                  name="confirmationEmail"
+                  id="confirmationEmail"
+                  className="w-80 focus:ring-indigo-500 shadow-md focus:border-indigo-500 block pl-7 p-4 sm:text-sm border-gray-300 rounded-md" placeholder="x@y.com" />
+              </div>
+              <div className="text-xs text-gray-700 flex">
+                <label className="flex items-center mr-2">
+                  <input
+                    type="checkbox"
+                    className="form-checkbox" />
+                </label>
+                <span>I accept Eincode &apos;terms of service&apos; and I agree that my order can be rejected in the case data provided above are not correct</span>
               </div>
             </div>
           </div>
         </div>
-        <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-          <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
-            Deactivate
-          </button>
-          <button type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+        <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex">
+          <Button>
+            Submit
+          </Button>
+          <Button
+            variant="red">
             Cancel
-          </button>
+          </Button>
         </div>
       </div>
     </Modal>
