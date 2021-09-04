@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      flex: {
+        "2": "2 2 0%"
+      },
       maxWidth: {
         "8xl": "1920px"
       },
