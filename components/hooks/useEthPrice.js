@@ -6,6 +6,7 @@ const COURSE_PRICE = 15
 const fetcher = async url => {
   const res = await fetch(url)
   const json = await res.json()
+
   return json.market_data.current_price.usd ?? null
 }
 
