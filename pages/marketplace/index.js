@@ -14,7 +14,7 @@ export default function Marketplace({courses}) {
   const [selectedCourse, setSelectedCourse] = useState(null)
   const { account } = useAccount()
   const { network } = useNetwork()
-  const { eth } = useEthPrice()
+  const { eth, perItem } = useEthPrice()
 
   return (
     <>
@@ -30,6 +30,7 @@ export default function Marketplace({courses}) {
         />
         <EthRates
           eth={eth.data}
+          ethPerItem={eth.perItem}
         />
       </div>
       <CourseList
