@@ -1,11 +1,14 @@
-export default function EthRates() {
+
+
+
+export default function EthRates({eth}) {
 
   return (
     <div className="grid grid-cols-4 mb-5">
       <div className="flex flex-1 items-stretch text-center">
         <div className="p-10 border drop-shadow rounded-md">
           <div>
-            <span className="text-2xl font-bold">ETH = 3145.1$</span>
+            <span className="text-2xl font-bold">ETH = {eth}$</span>
           </div>
           <p className="text-xl text-gray-500">Current eth Price</p>
         </div>
