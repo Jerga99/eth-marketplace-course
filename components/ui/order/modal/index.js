@@ -10,6 +10,23 @@ const defaultOrder = {
   confirmationEmail: ""
 }
 
+const _createFormState = (isDisabled = false, message =  "") => ({isDisabled, message})
+
+const createFormState = ({price, email, confirmationEmail}) => {
+  if (!price || Number(price) <= 0) {
+    return _createFormState(true, "Price is not valid.")
+  }
+  else if (confirmationEmail.length === 0 || email.length === 0) {
+    return _createFormState(true)
+  }
+  else if (email !== confirmationEmail) {
+    return _createFormState(true, "Email are not matching.")
+  }
+
+  return _createFormState()
+}
+
+
 export default function OrderModal({course, onClose}) {
   const [isOpen, setIsOpen] = useState(false)
   const [order, setOrder] = useState(defaultOrder)
@@ -31,6 +48,8 @@ export default function OrderModal({course, onClose}) {
     setOrder(defaultOrder)
     onClose()
   }
+
+  const formState = createFormState(order)
 
   return (
     <Modal isOpen={isOpen}>
@@ -126,12 +145,19 @@ export default function OrderModal({course, onClose}) {
                 </label>
                 <span>I accept Eincode &apos;terms of service&apos; and I agree that my order can be rejected in the case data provided above are not correct</span>
               </div>
+              { formState.message &&
+                <div className="p-4 my-3 text-red-700 bg-red-200 rounded-lg text-sm">
+                  { formState.message }
+                </div>
+              }
             </div>
           </div>
         </div>
         <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex">
-          <Button onClick={() => {
-            alert(JSON.stringify(order))
+          <Button
+            disabled={formState.isDisabled}
+            onClick={() => {
+              alert(JSON.stringify(order))
           }}>
             Submit
           </Button>
