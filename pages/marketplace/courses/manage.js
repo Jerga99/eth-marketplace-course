@@ -8,7 +8,9 @@ export default function ManageCourses() {
 
   return (
     <>
-      <MarketHeader />
+      <div className="py-4">
+        <MarketHeader />
+      </div>
       <section className="grid grid-cols-1">
         <OwnedCourseCard />
       </section>
