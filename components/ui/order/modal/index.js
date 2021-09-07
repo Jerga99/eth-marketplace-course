@@ -37,7 +37,7 @@ export default function OrderModal({course, onClose}) {
       <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
         <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
           <div className="sm:flex sm:items-start">
-            <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+            <div className="mt-3 sm:mt-0 sm:ml-4 sm:text-left">
               <h3 className="mb-7 text-lg font-bold leading-6 text-gray-900" id="modal-title">
                 {course.title}
               </h3>
@@ -86,6 +86,12 @@ export default function OrderModal({course, onClose}) {
                   <label className="mb-2 font-bold">Email</label>
                 </div>
                 <input
+                  onChange={({target: {value}}) => {
+                    setOrder({
+                      ...order,
+                      email: value.trim()
+                    })
+                  }}
                   type="email"
                   name="email"
                   id="email"
@@ -101,6 +107,12 @@ export default function OrderModal({course, onClose}) {
                   <label className="mb-2 font-bold">Repeat Email</label>
                 </div>
                 <input
+                  onChange={({target: {value}}) => {
+                    setOrder({
+                      ...order,
+                      confirmationEmail: value.trim()
+                    })
+                  }}
                   type="email"
                   name="confirmationEmail"
                   id="confirmationEmail"
@@ -118,7 +130,9 @@ export default function OrderModal({course, onClose}) {
           </div>
         </div>
         <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex">
-          <Button>
+          <Button onClick={() => {
+            alert(JSON.stringify(order))
+          }}>
             Submit
           </Button>
           <Button
