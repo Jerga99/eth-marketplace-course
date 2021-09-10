@@ -13,7 +13,6 @@ export default function OwnedCourses({courses}) {
 
   return (
     <>
-      { JSON.stringify(ownedCourses.data) }
       <div className="py-4">
         <MarketHeader />
       </div>
