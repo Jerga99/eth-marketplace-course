@@ -11,12 +11,12 @@ import { getAllCourses } from "@content/courses/fetcher";
 export default function Course({course}) {
   const { account } = useAccount()
   const { ownedCourse } = useOwnedCourse(course, account.data)
-  console.log(ownedCourse)
 
   return (
     <>
       <div className="py-4">
         <CourseHero
+          hasOwner={!!ownedCourse.data}
           title={course.title}
           description={course.description}
           image={course.coverImage}
