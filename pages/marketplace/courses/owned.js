@@ -18,9 +18,7 @@ export default function OwnedCourses({courses}) {
     <>
       <MarketHeader />
       <section className="grid grid-cols-1">
-        { ownedCourses.hasInitialResponse && (
-          !ownedCourses.data || ownedCourses?.data.length === 0
-        ) &&
+        { ownedCourses.isEmpty &&
           <div className="w-1/2">
             <Message type="warning">
               <div>You don't own any courses</div>
