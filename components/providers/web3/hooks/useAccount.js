@@ -24,10 +24,16 @@ export const handler = (web3, provider) => () => {
   )
 
   useEffect(() => {
+    console.log("SUBSCRIBING TO EVENT")
     provider &&
     provider.on("accountsChanged",
-      accounts => mutate(accounts[0] ?? null)
+      accounts => {
+        console.log("ON ACCOUNT DATA")
+        mutate(accounts[0] ?? null)
+      }
     )
+
+    console.log(provider)
   }, [provider])
 
   return {
