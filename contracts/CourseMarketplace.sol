@@ -93,6 +93,27 @@ contract CourseMarketplace {
     course.state = State.Activated;
   }
 
+  function deactivateCourse(bytes32 courseHash)
+    external
+    onlyOwner
+  {
+    if (!isCourseCreated(courseHash)) {
+      revert CourseIsNotCreated();
+    }
+
+    Course storage course = ownedCourses[courseHash];
+
+    if (course.state != State.Purchased) {
+      revert InvalidState();
+    }
+
+    (bool success, ) = course.owner.call{value: course.price}("");
+    require(success, "Transfer failed!");
+
+    course.state = State.Deactivated;
+    course.price = 0;
+  }
+
   function transferOwnership(address newOwner)
     external
     onlyOwner
