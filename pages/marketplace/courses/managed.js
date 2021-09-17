@@ -8,6 +8,16 @@ import { BaseLayout } from "@components/ui/layout";
 import { MarketHeader } from "@components/ui/marketplace";
 import { useState } from "react";
 
+// BEFORE TX BALANCE -> 85,233893735999999996
+
+// GAS 133009 * 20000000000 -> 2660180000000000 -> 0,00266018
+
+// GAS + VALUE SEND = 0,00266018 + 1 -> 1,00266018
+
+// AFTER TX -> 84,231233556
+// AFTER TX -> 84,231233556
+//             85,231233556
+
 const VerificationInput = ({onVerify}) => {
   const [ email, setEmail ] = useState("")
 
@@ -56,16 +66,23 @@ export default function ManagedCourses() {
       })
   }
 
-  const activateCourse = async courseHash => {
+  const changeCourseState = async (courseHash, method) => {
     try {
-      await contract.methods
-        .activateCourse(courseHash)
+      await contract.methods[method](courseHash)
         .send({
           from: account.data
         })
     } catch(e) {
       console.error(e.message)
     }
+  }
+
+  const activateCourse = async courseHash => {
+    changeCourseState(courseHash, "activateCourse")
+  }
+
+  const deactivateCourse = async courseHash => {
+    changeCourseState(courseHash, "deactivateCourse")
   }
 
   if (!account.isAdmin) {
@@ -111,7 +128,9 @@ export default function ManagedCourses() {
                   variant="green">
                   Activate
                 </Button>
-                <Button variant="red">
+                <Button
+                  onClick={() => deactivateCourse(course.hash)}
+                  variant="red">
                   Deactivate
                 </Button>
               </div>
