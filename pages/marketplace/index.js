@@ -14,7 +14,9 @@ export default function Marketplace({courses}) {
   const { web3, contract, requireInstall } = useWeb3()
   const { hasConnectedWallet, isConnecting, account } = useWalletInfo()
   const { ownedCourses } = useOwnedCourses(courses, account.data)
+
   const [selectedCourse, setSelectedCourse] = useState(null)
+  const [isNewPurchase, setIsNewPurchase] = useState(true)
 
   const purchaseCourse = async order => {
     const hexCourseId = web3.utils.utf8ToHex(selectedCourse.id)
@@ -100,7 +102,10 @@ export default function Marketplace({courses}) {
                           <Button
                             size="sm"
                             disabled={false}
-                            onClick={() => alert("Re-activating")}
+                            onClick={() => {
+                              setIsNewPurchase(false)
+                              setSelectedCourse(course)
+                            }}
                             variant="purple">
                             Fund to Activate
                           </Button>
@@ -129,8 +134,12 @@ export default function Marketplace({courses}) {
       { selectedCourse &&
         <OrderModal
           course={selectedCourse}
+          isNewPurchase={isNewPurchase}
           onSubmit={purchaseCourse}
-          onClose={() => setSelectedCourse(null)}
+          onClose={() => {
+            setSelectedCourse(null)
+            setIsNewPurchase(true)
+          }}
         />
       }
     </>
