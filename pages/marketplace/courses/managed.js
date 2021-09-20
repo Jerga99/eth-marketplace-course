@@ -42,6 +42,10 @@ export default function ManagedCourses() {
   const { managedCourses } = useManagedCourses(account)
 
   const verifyCourse = (email, {hash, proof}) => {
+    if (!email) {
+      return
+    }
+
     const emailHash = web3.utils.sha3(email)
     const proofToCheck = web3.utils.soliditySha3(
       { type: "bytes32", value: emailHash },
