@@ -236,7 +236,6 @@ contract("CourseMarketplace", accounts => {
   })
 
   describe("Receive funds", () => {
-
     it("should have transacted funds", async () => {
       const value = "100000000000000000"
       const contractBeforeTx = await getBalance(_contract.address)
@@ -254,8 +253,48 @@ contract("CourseMarketplace", accounts => {
         contractAfterTx,
         "Value after transaction is not matching!"
       )
+    })
+  })
+
+  describe("Normal withdraw", () => {
+    const fundsToDeposit = "100000000000000000"
+    const overLimitFunds = "999999000000000000000"
+    let currentOwner = null
+
+    before(async () => {
+      currentOwner = await _contract.getContractOwner()
+
+      await web3.eth.sendTransaction({
+        from: buyer,
+        to: _contract.address,
+        value: fundsToDeposit
+      })
+    })
+
+    it("should fail when withdrawing with NOT owner address", async () => {
+      const value = "10000000000000000"
+      await catchRevert(_contract.withdraw(value, {from: buyer}))
+    })
+
+    it("should fail when withdrawing OVER limit balance", async () => {
+      await catchRevert(_contract.withdraw(overLimitFunds, {from: currentOwner}))
+    })
+
+    it("should have +0.1ETH after withdraw", async () => {
+      const ownerBalance = await getBalance(currentOwner)
+      const result = await _contract.withdraw(fundsToDeposit, {from: currentOwner})
+      const newOwnerBalance = await getBalance(currentOwner)
+      const gas = await getGas(result)
+
+      assert.equal(
+        toBN(ownerBalance).add(toBN(fundsToDeposit)).sub(toBN(gas)).toString(),
+        newOwnerBalance,
+        "The new owner balance is not correct!"
+      )
+
 
     })
+
   })
 
 
