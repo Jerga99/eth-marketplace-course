@@ -141,13 +141,19 @@ export default function ManagedCourses() {
     )
   }
 
-  useEffect(() => {
-    console.log(filters)
-  }, [filters])
-
   if (!account.isAdmin) {
     return null
   }
+
+  const filteredCourses = managedCourses.data
+    ?.filter((course) => {
+      if (filters.state === "all") {
+        return true
+      }
+
+      return course.state === filters.state
+    })
+    .map(course => renderCard(course) )
 
   return (
     <>
@@ -164,7 +170,12 @@ export default function ManagedCourses() {
           </div>
         }
         <h1 className="text-2xl font-bold p-5">All Courses</h1>
-        { managedCourses.data?.map(course => renderCard(course) )}
+        { filteredCourses }
+        { filteredCourses?.length === 0 &&
+          <Message type="warning">
+            No courses to display
+          </Message>
+        }
       </section>
     </>
   )
