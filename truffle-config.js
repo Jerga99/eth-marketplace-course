@@ -33,11 +33,19 @@ module.exports = {
   }
 }
 
-// 5500000 * 20000000000 = 110000000000000000 = 0,11 ETH => 334 USD
+// BASE FEE (determnd by ethereum) => 39.791392694
 
+// Max Priority Fee Per Gas(tip) => 2
 
-// transaction hash:    0xd6fde57764ae89d6799d355abd025d861e500ea797ebaf08d2d09fbad5561a9b
-// contract address:    0x55a4202C5854AE44282d6824feEDa40B46E17f89
+// GAS PRICE = BASE FEE + TIP => 41.791392694
 
+// GAS USED 21000
 
-// 0,00000002 * 1494678
+// Transaction Fee = GAS USED * GAS PRICE =
+//                   41.791392694 * 21000
+
+// BURNT FEE => BASE FEE * GAS USED
+//           39.791392694 * 21000
+
+// REST TO MINER => TIP * GAS USED
+//                   2  * 21000
