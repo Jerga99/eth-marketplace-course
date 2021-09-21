@@ -49,3 +49,7 @@ module.exports = {
 
 // REST TO MINER => TIP * GAS USED
 //                   2  * 21000
+
+
+// NEXT_PUBLIC_TARGET_CHAIN_ID=1337
+// NEXT_PUBLIC_NETWORK_ID=5777
