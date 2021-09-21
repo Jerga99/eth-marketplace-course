@@ -36,3 +36,8 @@ module.exports = {
 // 5500000 * 20000000000 = 110000000000000000 = 0,11 ETH => 334 USD
 
 
+// transaction hash:    0xd6fde57764ae89d6799d355abd025d861e500ea797ebaf08d2d09fbad5561a9b
+// contract address:    0x55a4202C5854AE44282d6824feEDa40B46E17f89
+
+
+// 0,00000002 * 1494678
