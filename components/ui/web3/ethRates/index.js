@@ -29,7 +29,7 @@ export default function EthRates() {
         </div>
         <p className="text-lg text-gray-500">Current eth Price</p>
       </div>
-      <div className="p-6 border drop-shadow rounded-md">
+      {/* <div className="p-6 border drop-shadow rounded-md">
         <div className="flex items-center justify-center">
           { eth.data ?
             <>
@@ -52,7 +52,7 @@ export default function EthRates() {
           }
         </div>
         <p className="text-lg text-gray-500">Price per course</p>
-      </div>
+      </div> */}
     </div>
   )
 }

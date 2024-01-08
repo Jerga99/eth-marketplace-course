@@ -13,7 +13,8 @@
       "Build ecommerce apps with modern technologies",
       "Use Shopify to your advantage"
     ],
-    "createdAt": ""
+    "createdAt": "",
+    "price": 13
   },
   {
     "id": "1331625",
@@ -30,7 +31,8 @@
       "Understand meaning and benefits of JAMStack",
       "Use GraphQL to your advantage"
     ],
-    "createdAt": ""
+    "createdAt": "",
+    "price": 10
   },
   {
     "id": "1112431",

@@ -46,7 +46,7 @@ export default function OrderModal({course, onClose, onSubmit, isNewPurchase}) {
       setIsOpen(true)
       setOrder({
         ...defaultOrder,
-        price: eth.perItem
+        price: eth.perItem[course.id]
       })
     }
   }, [course])
@@ -80,7 +80,7 @@ export default function OrderModal({course, onClose, onSubmit, isNewPurchase}) {
                         onChange={({target: {checked}}) => {
                           setOrder({
                             ...order,
-                            price: checked ? order.price : eth.perItem
+                            price: checked ? order.price : eth.perItem[course.id]
                           })
                           setEnablePrice(checked)
                         }}

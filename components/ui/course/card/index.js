@@ -3,8 +3,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { AnimateKeyframes } from "react-simple-animate"
+import { useEthPrice } from "@components/hooks/useEthPrice"
 
 export default function Card({course, disabled, Footer, state}) {
+  const { eth } = useEthPrice()
   return (
     <div
       className="bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
@@ -50,7 +52,6 @@ export default function Card({course, disabled, Footer, state}) {
               }
             </div>
           </div>
-
           <Link href={`/courses/${course.slug}`}>
             <a
               className="h-12 block mt-1 text-sm sm:text-base leading-tight font-medium text-black hover:underline">
@@ -60,6 +61,9 @@ export default function Card({course, disabled, Footer, state}) {
           <p
             className="mt-2 mb-4 text-sm sm:text-base text-gray-500">
             {course.description.substring(0, 70)}...
+          </p>
+          <p>
+            Price: {eth.perItem[course.id]}
           </p>
           { Footer &&
             <div className="mt-2">
